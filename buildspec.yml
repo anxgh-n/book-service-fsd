@@ -5,7 +5,7 @@ phases:
       - echo Logging in to Amazon ECR....
       - aws --version
       #- $(aws ecr get-login --region ap-south-1 --no-include-email)
-      - ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 886436927513.dkr.ecr.us-east-1.amazonaws.com
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 886436927513.dkr.ecr.us-east-1.amazonaws.com
       - REPOSITORY_URI=886436927513.dkr.ecr.us-east-1.amazonaws.com/book-image
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
